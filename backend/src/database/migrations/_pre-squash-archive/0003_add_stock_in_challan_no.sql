@@ -1,0 +1,1 @@
+ALTER TABLE "stock_in_transactions" ADD COLUMN "challan_no" text;

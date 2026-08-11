@@ -1,0 +1,1 @@
+ALTER TABLE "tag_presets" ADD COLUMN "config" jsonb;

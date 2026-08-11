@@ -1,0 +1,3 @@
+ALTER TYPE "public"."stock_history_event_type" ADD VALUE 'STOCK_OUT';--> statement-breakpoint
+ALTER TABLE "stock_history" ADD COLUMN "stock_out_transaction_id" integer;--> statement-breakpoint
+ALTER TABLE "stock_history" ADD CONSTRAINT "stock_history_stock_out_transaction_id_stock_out_transactions_id_fk" FOREIGN KEY ("stock_out_transaction_id") REFERENCES "public"."stock_out_transactions"("id") ON DELETE set null ON UPDATE no action;

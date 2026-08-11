@@ -1,0 +1,2095 @@
+{
+<<<<<<< HEAD
+  "id": "b91e8f3a-3554-43ff-9531-b6568a871743",
+  "prevId": "3d85301c-f757-4278-8c13-de355945f211",
+=======
+  "id": "2083517c-97dc-4a29-afc0-dca604693c6f",
+  "prevId": "43e400c8-bd1f-4de3-8402-b56fe5a6693c",
+>>>>>>> fe0fda8b1819bc4c383b59f229a3b47b2578ba65
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.designs": {
+      "name": "designs",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "designs_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+<<<<<<< HEAD
+        "item_name": {
+          "name": "item_name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quality": {
+          "name": "quality",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+=======
+>>>>>>> fe0fda8b1819bc4c383b59f229a3b47b2578ba65
+        "default_cost_price_per_piece": {
+          "name": "default_cost_price_per_piece",
+          "type": "integer",
+          "primaryKey": false,
+<<<<<<< HEAD
+          "notNull": false
+=======
+          "notNull": true
+>>>>>>> fe0fda8b1819bc4c383b59f229a3b47b2578ba65
+        },
+        "default_selling_price_per_piece": {
+          "name": "default_selling_price_per_piece",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "notes": {
+          "name": "notes",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.design_sizes": {
+      "name": "design_sizes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "design_sizes_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "variant_id": {
+          "name": "variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "size_label": {
+          "name": "size_label",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "display_order": {
+          "name": "display_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "unset_price_per_size": {
+          "name": "unset_price_per_size",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_active": {
+          "name": "is_active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "included_in_set": {
+          "name": "included_in_set",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "design_sizes_variant_id_color_variants_id_fk": {
+          "name": "design_sizes_variant_id_color_variants_id_fk",
+          "tableFrom": "design_sizes",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.color_variants": {
+      "name": "color_variants",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "color_variants_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "design_id": {
+          "name": "design_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "color_name": {
+          "name": "color_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "color_hex": {
+          "name": "color_hex",
+          "type": "varchar(7)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "image_public_id": {
+          "name": "image_public_id",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "qr_payload": {
+          "name": "qr_payload",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "qr_generated_at": {
+          "name": "qr_generated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_active": {
+          "name": "is_active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "color_variants_design_id_designs_id_fk": {
+          "name": "color_variants_design_id_designs_id_fk",
+          "tableFrom": "color_variants",
+          "tableTo": "designs",
+          "columnsFrom": [
+            "design_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_in_transactions": {
+      "name": "stock_in_transactions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_in_transactions_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "variant_id": {
+          "name": "variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stock_date": {
+          "name": "stock_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+<<<<<<< HEAD
+        "challan_no": {
+          "name": "challan_no",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+=======
+>>>>>>> fe0fda8b1819bc4c383b59f229a3b47b2578ba65
+        "total_sets_received": {
+          "name": "total_sets_received",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stock_in_transactions_variant_id_color_variants_id_fk": {
+          "name": "stock_in_transactions_variant_id_color_variants_id_fk",
+          "tableFrom": "stock_in_transactions",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_in_entries": {
+      "name": "stock_in_entries",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_in_entries_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "stock_in_transaction_id": {
+          "name": "stock_in_transaction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "color_variant_id": {
+          "name": "color_variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "design_size_id": {
+          "name": "design_size_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quantity_added": {
+          "name": "quantity_added",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stock_in_entries_stock_in_transaction_id_stock_in_transactions_id_fk": {
+          "name": "stock_in_entries_stock_in_transaction_id_stock_in_transactions_id_fk",
+          "tableFrom": "stock_in_entries",
+          "tableTo": "stock_in_transactions",
+          "columnsFrom": [
+            "stock_in_transaction_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_in_entries_color_variant_id_color_variants_id_fk": {
+          "name": "stock_in_entries_color_variant_id_color_variants_id_fk",
+          "tableFrom": "stock_in_entries",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "color_variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "stock_in_entries_design_size_id_design_sizes_id_fk": {
+          "name": "stock_in_entries_design_size_id_design_sizes_id_fk",
+          "tableFrom": "stock_in_entries",
+          "tableTo": "design_sizes",
+          "columnsFrom": [
+            "design_size_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_in_bundle": {
+      "name": "stock_in_bundle",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_in_bundle_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "stock_in_transaction_id": {
+          "name": "stock_in_transaction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bundle_number": {
+          "name": "bundle_number",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stock_in_bundle_stock_in_transaction_id_stock_in_transactions_id_fk": {
+          "name": "stock_in_bundle_stock_in_transaction_id_stock_in_transactions_id_fk",
+          "tableFrom": "stock_in_bundle",
+          "tableTo": "stock_in_transactions",
+          "columnsFrom": [
+            "stock_in_transaction_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_in_bundle_pieces": {
+      "name": "stock_in_bundle_pieces",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_in_bundle_pieces_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "bundle_id": {
+          "name": "bundle_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "design_size_id": {
+          "name": "design_size_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stock_in_bundle_pieces_bundle_id_stock_in_bundle_id_fk": {
+          "name": "stock_in_bundle_pieces_bundle_id_stock_in_bundle_id_fk",
+          "tableFrom": "stock_in_bundle_pieces",
+          "tableTo": "stock_in_bundle",
+          "columnsFrom": [
+            "bundle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_in_bundle_pieces_design_size_id_design_sizes_id_fk": {
+          "name": "stock_in_bundle_pieces_design_size_id_design_sizes_id_fk",
+          "tableFrom": "stock_in_bundle_pieces",
+          "tableTo": "design_sizes",
+          "columnsFrom": [
+            "design_size_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "stock_in_bundle_pieces_bundle_id_design_size_id_unique": {
+          "name": "stock_in_bundle_pieces_bundle_id_design_size_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "bundle_id",
+            "design_size_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_in_loose_pieces": {
+      "name": "stock_in_loose_pieces",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_in_loose_pieces_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "stock_in_transaction_id": {
+          "name": "stock_in_transaction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "design_size_id": {
+          "name": "design_size_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stock_in_loose_pieces_stock_in_transaction_id_stock_in_transactions_id_fk": {
+          "name": "stock_in_loose_pieces_stock_in_transaction_id_stock_in_transactions_id_fk",
+          "tableFrom": "stock_in_loose_pieces",
+          "tableTo": "stock_in_transactions",
+          "columnsFrom": [
+            "stock_in_transaction_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_in_loose_pieces_design_size_id_design_sizes_id_fk": {
+          "name": "stock_in_loose_pieces_design_size_id_design_sizes_id_fk",
+          "tableFrom": "stock_in_loose_pieces",
+          "tableTo": "design_sizes",
+          "columnsFrom": [
+            "design_size_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "stock_in_loose_pieces_stock_in_transaction_id_design_size_id_unique": {
+          "name": "stock_in_loose_pieces_stock_in_transaction_id_design_size_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "stock_in_transaction_id",
+            "design_size_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_out_transactions": {
+      "name": "stock_out_transactions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_out_transactions_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "transaction_date": {
+          "name": "transaction_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_out_entries": {
+      "name": "stock_out_entries",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_out_entries_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "stock_out_transaction_id": {
+          "name": "stock_out_transaction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "color_variant_id": {
+          "name": "color_variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "design_size_id": {
+          "name": "design_size_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "unit_price": {
+          "name": "unit_price",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "stock_out_entries_stock_out_transaction_id_stock_out_transactions_id_fk": {
+          "name": "stock_out_entries_stock_out_transaction_id_stock_out_transactions_id_fk",
+          "tableFrom": "stock_out_entries",
+          "tableTo": "stock_out_transactions",
+          "columnsFrom": [
+            "stock_out_transaction_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_out_entries_color_variant_id_color_variants_id_fk": {
+          "name": "stock_out_entries_color_variant_id_color_variants_id_fk",
+          "tableFrom": "stock_out_entries",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "color_variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "stock_out_entries_design_size_id_design_sizes_id_fk": {
+          "name": "stock_out_entries_design_size_id_design_sizes_id_fk",
+          "tableFrom": "stock_out_entries",
+          "tableTo": "design_sizes",
+          "columnsFrom": [
+            "design_size_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_groups": {
+      "name": "stock_groups",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_groups_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "color_variant_id": {
+          "name": "color_variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "stock_group_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "composition_signature": {
+          "name": "composition_signature",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "stock_groups_color_variant_id_idx": {
+          "name": "stock_groups_color_variant_id_idx",
+          "columns": [
+            {
+              "expression": "color_variant_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "stock_groups_set_unique_idx": {
+          "name": "stock_groups_set_unique_idx",
+          "columns": [
+            {
+              "expression": "color_variant_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "where": "\"stock_groups\".\"type\" = 'SET'",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "stock_groups_bundle_unique_idx": {
+          "name": "stock_groups_bundle_unique_idx",
+          "columns": [
+            {
+              "expression": "color_variant_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "composition_signature",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "where": "\"stock_groups\".\"type\" = 'BUNDLE'",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "stock_groups_loose_piece_unique_idx": {
+          "name": "stock_groups_loose_piece_unique_idx",
+          "columns": [
+            {
+              "expression": "color_variant_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "composition_signature",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "where": "\"stock_groups\".\"type\" = 'LOOSE_PIECE'",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "stock_groups_color_variant_id_color_variants_id_fk": {
+          "name": "stock_groups_color_variant_id_color_variants_id_fk",
+          "tableFrom": "stock_groups",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "color_variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_items": {
+      "name": "stock_items",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_items_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "stock_group_id": {
+          "name": "stock_group_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "color_variant_id": {
+          "name": "color_variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "design_size_id": {
+          "name": "design_size_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stock_in_transaction_id": {
+          "name": "stock_in_transaction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bundle_id": {
+          "name": "bundle_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "stock_group_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "stock_item_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'AVAILABLE'"
+        },
+        "unset_at": {
+          "name": "unset_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "stock_items_stock_group_id_idx": {
+          "name": "stock_items_stock_group_id_idx",
+          "columns": [
+            {
+              "expression": "stock_group_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "stock_items_stock_in_transaction_id_idx": {
+          "name": "stock_items_stock_in_transaction_id_idx",
+          "columns": [
+            {
+              "expression": "stock_in_transaction_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "stock_items_status_idx": {
+          "name": "stock_items_status_idx",
+          "columns": [
+            {
+              "expression": "status",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "stock_items_stock_group_id_stock_groups_id_fk": {
+          "name": "stock_items_stock_group_id_stock_groups_id_fk",
+          "tableFrom": "stock_items",
+          "tableTo": "stock_groups",
+          "columnsFrom": [
+            "stock_group_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_items_color_variant_id_color_variants_id_fk": {
+          "name": "stock_items_color_variant_id_color_variants_id_fk",
+          "tableFrom": "stock_items",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "color_variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_items_design_size_id_design_sizes_id_fk": {
+          "name": "stock_items_design_size_id_design_sizes_id_fk",
+          "tableFrom": "stock_items",
+          "tableTo": "design_sizes",
+          "columnsFrom": [
+            "design_size_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_items_stock_in_transaction_id_stock_in_transactions_id_fk": {
+          "name": "stock_items_stock_in_transaction_id_stock_in_transactions_id_fk",
+          "tableFrom": "stock_items",
+          "tableTo": "stock_in_transactions",
+          "columnsFrom": [
+            "stock_in_transaction_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_items_bundle_id_stock_in_bundle_id_fk": {
+          "name": "stock_items_bundle_id_stock_in_bundle_id_fk",
+          "tableFrom": "stock_items",
+          "tableTo": "stock_in_bundle",
+          "columnsFrom": [
+            "bundle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_item_lineage": {
+      "name": "stock_item_lineage",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_item_lineage_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "result_stock_item_id": {
+          "name": "result_stock_item_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_stock_item_id": {
+          "name": "source_stock_item_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "stock_item_lineage_result_stock_item_id_idx": {
+          "name": "stock_item_lineage_result_stock_item_id_idx",
+          "columns": [
+            {
+              "expression": "result_stock_item_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "stock_item_lineage_result_stock_item_id_stock_items_id_fk": {
+          "name": "stock_item_lineage_result_stock_item_id_stock_items_id_fk",
+          "tableFrom": "stock_item_lineage",
+          "tableTo": "stock_items",
+          "columnsFrom": [
+            "result_stock_item_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_item_lineage_source_stock_item_id_stock_items_id_fk": {
+          "name": "stock_item_lineage_source_stock_item_id_stock_items_id_fk",
+          "tableFrom": "stock_item_lineage",
+          "tableTo": "stock_items",
+          "columnsFrom": [
+            "source_stock_item_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "stock_item_lineage_source_stock_item_id_unique": {
+          "name": "stock_item_lineage_source_stock_item_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "source_stock_item_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.variant_inventory": {
+      "name": "variant_inventory",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "variant_inventory_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "color_variant_id": {
+          "name": "color_variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "design_size_id": {
+          "name": "design_size_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "variant_inventory_color_variant_id_color_variants_id_fk": {
+          "name": "variant_inventory_color_variant_id_color_variants_id_fk",
+          "tableFrom": "variant_inventory",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "color_variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "variant_inventory_design_size_id_design_sizes_id_fk": {
+          "name": "variant_inventory_design_size_id_design_sizes_id_fk",
+          "tableFrom": "variant_inventory",
+          "tableTo": "design_sizes",
+          "columnsFrom": [
+            "design_size_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "variant_inventory_color_variant_id_design_size_id_unique": {
+          "name": "variant_inventory_color_variant_id_design_size_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "color_variant_id",
+            "design_size_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.variant_status_transactions": {
+      "name": "variant_status_transactions",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "variant_status_transactions_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "color_variant_id": {
+          "name": "color_variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stock_in_transaction_id": {
+          "name": "stock_in_transaction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "from_status": {
+          "name": "from_status",
+          "type": "variant_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "to_status": {
+          "name": "to_status",
+          "type": "variant_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "trigger_source": {
+          "name": "trigger_source",
+          "type": "variant_status_transition_trigger",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "variant_status_transactions_color_variant_id_color_variants_id_fk": {
+          "name": "variant_status_transactions_color_variant_id_color_variants_id_fk",
+          "tableFrom": "variant_status_transactions",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "color_variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "variant_status_transactions_stock_in_transaction_id_stock_in_transactions_id_fk": {
+          "name": "variant_status_transactions_stock_in_transaction_id_stock_in_transactions_id_fk",
+          "tableFrom": "variant_status_transactions",
+          "tableTo": "stock_in_transactions",
+          "columnsFrom": [
+            "stock_in_transaction_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_item_qr": {
+      "name": "stock_item_qr",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_item_qr_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "stock_item_id": {
+          "name": "stock_item_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "payload": {
+          "name": "payload",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "generated_at": {
+          "name": "generated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "stock_item_qr_stock_item_id_idx": {
+          "name": "stock_item_qr_stock_item_id_idx",
+          "columns": [
+            {
+              "expression": "stock_item_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "stock_item_qr_stock_item_id_stock_items_id_fk": {
+          "name": "stock_item_qr_stock_item_id_stock_items_id_fk",
+          "tableFrom": "stock_item_qr",
+          "tableTo": "stock_items",
+          "columnsFrom": [
+            "stock_item_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.stock_history": {
+      "name": "stock_history",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "stock_history_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "event_type": {
+          "name": "event_type",
+          "type": "stock_history_event_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "color_variant_id": {
+          "name": "color_variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "stock_group_id": {
+          "name": "stock_group_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "result_stock_item_id": {
+          "name": "result_stock_item_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "stock_in_transaction_id": {
+          "name": "stock_in_transaction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+<<<<<<< HEAD
+=======
+        "stock_out_transaction_id": {
+          "name": "stock_out_transaction_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+>>>>>>> fe0fda8b1819bc4c383b59f229a3b47b2578ba65
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "metadata": {
+          "name": "metadata",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "performed_by": {
+          "name": "performed_by",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "stock_history_event_type_idx": {
+          "name": "stock_history_event_type_idx",
+          "columns": [
+            {
+              "expression": "event_type",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "stock_history_color_variant_id_idx": {
+          "name": "stock_history_color_variant_id_idx",
+          "columns": [
+            {
+              "expression": "color_variant_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "stock_history_created_at_idx": {
+          "name": "stock_history_created_at_idx",
+          "columns": [
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "stock_history_color_variant_id_created_at_idx": {
+          "name": "stock_history_color_variant_id_created_at_idx",
+          "columns": [
+            {
+              "expression": "color_variant_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "stock_history_color_variant_id_color_variants_id_fk": {
+          "name": "stock_history_color_variant_id_color_variants_id_fk",
+          "tableFrom": "stock_history",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "color_variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "stock_history_stock_group_id_stock_groups_id_fk": {
+          "name": "stock_history_stock_group_id_stock_groups_id_fk",
+          "tableFrom": "stock_history",
+          "tableTo": "stock_groups",
+          "columnsFrom": [
+            "stock_group_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "stock_history_result_stock_item_id_stock_items_id_fk": {
+          "name": "stock_history_result_stock_item_id_stock_items_id_fk",
+          "tableFrom": "stock_history",
+          "tableTo": "stock_items",
+          "columnsFrom": [
+            "result_stock_item_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        },
+        "stock_history_stock_in_transaction_id_stock_in_transactions_id_fk": {
+          "name": "stock_history_stock_in_transaction_id_stock_in_transactions_id_fk",
+          "tableFrom": "stock_history",
+          "tableTo": "stock_in_transactions",
+          "columnsFrom": [
+            "stock_in_transaction_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+<<<<<<< HEAD
+=======
+        },
+        "stock_history_stock_out_transaction_id_stock_out_transactions_id_fk": {
+          "name": "stock_history_stock_out_transaction_id_stock_out_transactions_id_fk",
+          "tableFrom": "stock_history",
+          "tableTo": "stock_out_transactions",
+          "columnsFrom": [
+            "stock_out_transaction_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.order_forms": {
+      "name": "order_forms",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "order_forms_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "retailer_name": {
+          "name": "retailer_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "contact_person": {
+          "name": "contact_person",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "order_date": {
+          "name": "order_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "order_form_status",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'DRAFT'"
+        },
+        "notes": {
+          "name": "notes",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.order_form_items": {
+      "name": "order_form_items",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true,
+          "identity": {
+            "type": "always",
+            "name": "order_form_items_id_seq",
+            "schema": "public",
+            "increment": "1",
+            "startWith": "1",
+            "minValue": "1",
+            "maxValue": "2147483647",
+            "cache": "1",
+            "cycle": false
+          }
+        },
+        "order_form_id": {
+          "name": "order_form_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "color_variant_id": {
+          "name": "color_variant_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "type": {
+          "name": "type",
+          "type": "order_form_item_type",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "quantity": {
+          "name": "quantity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "loose_pieces_breakdown": {
+          "name": "loose_pieces_breakdown",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "unit_price": {
+          "name": "unit_price",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "estimated_value": {
+          "name": "estimated_value",
+          "type": "numeric(12, 2)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "order_form_items_order_form_id_order_forms_id_fk": {
+          "name": "order_form_items_order_form_id_order_forms_id_fk",
+          "tableFrom": "order_form_items",
+          "tableTo": "order_forms",
+          "columnsFrom": [
+            "order_form_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "order_form_items_color_variant_id_color_variants_id_fk": {
+          "name": "order_form_items_color_variant_id_color_variants_id_fk",
+          "tableFrom": "order_form_items",
+          "tableTo": "color_variants",
+          "columnsFrom": [
+            "color_variant_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+>>>>>>> fe0fda8b1819bc4c383b59f229a3b47b2578ba65
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.stock_group_type": {
+      "name": "stock_group_type",
+      "schema": "public",
+      "values": [
+        "SET",
+        "BUNDLE",
+        "LOOSE_PIECE"
+      ]
+    },
+    "public.stock_item_status": {
+      "name": "stock_item_status",
+      "schema": "public",
+      "values": [
+        "AVAILABLE",
+        "UNSET",
+        "CONSUMED"
+      ]
+    },
+    "public.variant_status": {
+      "name": "variant_status",
+      "schema": "public",
+      "values": [
+        "SET",
+        "UNSET"
+      ]
+    },
+    "public.variant_status_transition_trigger": {
+      "name": "variant_status_transition_trigger",
+      "schema": "public",
+      "values": [
+        "STOCK_IN",
+        "STOCK_OUT",
+        "MANUAL_ADJUSTMENT"
+      ]
+    },
+    "public.stock_history_event_type": {
+      "name": "stock_history_event_type",
+      "schema": "public",
+      "values": [
+        "STOCK_IN",
+        "SET_ASSEMBLED",
+<<<<<<< HEAD
+        "BUNDLE_ASSEMBLED"
+=======
+        "BUNDLE_ASSEMBLED",
+        "STOCK_OUT"
+      ]
+    },
+    "public.order_form_status": {
+      "name": "order_form_status",
+      "schema": "public",
+      "values": [
+        "DRAFT",
+        "SHARED",
+        "CONVERTED",
+        "CANCELLED"
+      ]
+    },
+    "public.order_form_item_type": {
+      "name": "order_form_item_type",
+      "schema": "public",
+      "values": [
+        "SET",
+        "LOOSE_PIECE"
+>>>>>>> fe0fda8b1819bc4c383b59f229a3b47b2578ba65
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
