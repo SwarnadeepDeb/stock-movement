@@ -1,0 +1,665 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: oklch(0.922 0 0);
+  --code-bg: #f4f3ec;
+  --accent: oklch(0.97 0 0);
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+
+  --background: oklch(1 0 0);
+
+  --foreground: oklch(0.145 0 0);
+
+  --card: oklch(1 0 0);
+
+  --card-foreground: oklch(0.145 0 0);
+
+  --popover: oklch(1 0 0);
+
+  --popover-foreground: oklch(0.145 0 0);
+
+  --primary: oklch(0.205 0 0);
+
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.97 0 0);
+
+  --secondary-foreground: oklch(0.205 0 0);
+
+  --muted: oklch(0.97 0 0);
+
+  --muted-foreground: oklch(0.556 0 0);
+
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --input: oklch(0.922 0 0);
+
+  --ring: oklch(0.708 0 0);
+
+  --chart-1: oklch(0.87 0 0);
+
+  --chart-2: oklch(0.556 0 0);
+
+  --chart-3: oklch(0.439 0 0);
+
+  --chart-4: oklch(0.371 0 0);
+
+  --chart-5: oklch(0.269 0 0);
+
+  --radius: 0.625rem;
+
+  --sidebar: oklch(0.985 0 0);
+
+  --sidebar-foreground: oklch(0.145 0 0);
+
+  --sidebar-primary: oklch(0.205 0 0);
+
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+
+  --sidebar-accent: oklch(0.97 0 0);
+
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+
+  --sidebar-border: oklch(0.922 0 0);
+
+  --sidebar-ring: oklch(0.708 0 0)
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Geist Variable', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+  color-scheme: dark;
+  --text: oklch(0.78 0.03 257);
+  --text-h: oklch(0.96 0.008 255);
+  --bg: oklch(0.17 0.025 265);
+  --background: oklch(0.17 0.025 265);
+  --foreground: oklch(0.96 0.008 255);
+  --card: oklch(0.21 0.028 264);
+  --card-foreground: oklch(0.96 0.008 255);
+  --popover: oklch(0.22 0.028 264);
+  --popover-foreground: oklch(0.96 0.008 255);
+  --primary: oklch(0.93 0.01 255);
+  --primary-foreground: oklch(0.21 0.028 264);
+  --secondary: oklch(0.28 0.032 262);
+  --secondary-foreground: oklch(0.96 0.008 255);
+  --muted: oklch(0.28 0.032 262);
+  --muted-foreground: oklch(0.74 0.03 257);
+  --accent: oklch(0.29 0.034 262);
+  --accent-foreground: oklch(0.96 0.008 255);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.6 0.03 257);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.21 0.028 264);
+  --sidebar-foreground: oklch(0.96 0.008 255);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.28 0.032 262);
+  --sidebar-accent-foreground: oklch(0.96 0.008 255);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.6 0.03 257);
+
+  /* Surfaces for the hardcoded bg-white / brand-hex classes (see "Dark mode overrides"). */
+  --app-surface: oklch(0.21 0.028 264);
+  --app-ink: oklch(0.88 0.06 280);
+  --app-ink-soft: oklch(0.8 0.07 255);
+  --app-brand-green: oklch(0.78 0.14 163);
+  --app-field-border: oklch(0.62 0.08 280 / 70%);
+
+  /* Pages hardcode Tailwind palette classes (bg-slate-50, text-slate-900, bg-emerald-50,
+     text-amber-700 …) rather than theme tokens, so dark mode flips the palette itself:
+     light tints become dark surfaces and dark ink becomes light ink. The 400–600 steps of
+     the accent hues stay put because they back solid buttons that carry text-white. */
+  --color-slate-50: oklch(0.24 0.03 262);
+  --color-slate-100: oklch(0.265 0.032 262);
+  --color-slate-200: oklch(0.32 0.035 260);
+  --color-slate-300: oklch(0.39 0.04 258);
+  --color-slate-400: oklch(0.63 0.035 257);
+  --color-slate-500: oklch(0.72 0.033 257);
+  --color-slate-600: oklch(0.78 0.03 257);
+  --color-slate-700: oklch(0.85 0.02 255);
+  --color-slate-800: oklch(0.9 0.015 255);
+  --color-slate-900: oklch(0.95 0.008 255);
+  --color-slate-950: oklch(0.98 0.003 250);
+  --color-gray-50: oklch(0.24 0.02 262);
+  --color-gray-100: oklch(0.265 0.02 262);
+  --color-gray-200: oklch(0.32 0.022 260);
+  --color-gray-300: oklch(0.39 0.025 258);
+  --color-gray-400: oklch(0.63 0.022 257);
+  --color-gray-500: oklch(0.72 0.02 257);
+  --color-gray-600: oklch(0.78 0.018 257);
+  --color-gray-700: oklch(0.85 0.012 255);
+  --color-gray-800: oklch(0.9 0.008 255);
+  --color-gray-900: oklch(0.95 0.005 255);
+  --color-gray-950: oklch(0.98 0.002 250);
+  --color-emerald-50: oklch(0.26 0.045 165);
+  --color-emerald-100: oklch(0.3 0.06 165);
+  --color-emerald-200: oklch(0.4 0.08 165);
+  --color-emerald-300: oklch(0.5 0.1 165);
+  --color-emerald-600: oklch(0.72 0.15 163);
+  --color-emerald-700: oklch(0.8 0.13 165);
+  --color-emerald-800: oklch(0.86 0.1 166);
+  --color-emerald-900: oklch(0.91 0.07 168);
+  --color-green-50: oklch(0.26 0.045 152);
+  --color-green-100: oklch(0.3 0.06 152);
+  --color-green-200: oklch(0.4 0.08 152);
+  --color-green-300: oklch(0.5 0.1 152);
+  --color-green-600: oklch(0.75 0.17 150);
+  --color-green-700: oklch(0.8 0.15 150);
+  --color-green-800: oklch(0.86 0.11 151);
+  --color-green-900: oklch(0.91 0.08 152);
+  --color-amber-50: oklch(0.27 0.045 70);
+  --color-amber-100: oklch(0.31 0.06 70);
+  --color-amber-200: oklch(0.42 0.08 70);
+  --color-amber-300: oklch(0.52 0.1 70);
+  --color-amber-600: oklch(0.8 0.16 75);
+  --color-amber-700: oklch(0.84 0.14 80);
+  --color-amber-800: oklch(0.88 0.11 85);
+  --color-amber-900: oklch(0.92 0.08 90);
+  --color-red-50: oklch(0.27 0.06 22);
+  --color-red-100: oklch(0.31 0.08 22);
+  --color-red-200: oklch(0.42 0.11 22);
+  --color-red-300: oklch(0.52 0.14 22);
+  --color-red-600: oklch(0.72 0.17 22);
+  --color-red-700: oklch(0.79 0.13 20);
+  --color-red-800: oklch(0.85 0.1 18);
+  --color-red-900: oklch(0.9 0.07 18);
+  --color-blue-50: oklch(0.26 0.05 260);
+  --color-blue-100: oklch(0.3 0.065 260);
+  --color-blue-200: oklch(0.4 0.09 258);
+  --color-blue-300: oklch(0.5 0.12 256);
+  --color-blue-600: oklch(0.72 0.14 256);
+  --color-blue-700: oklch(0.8 0.11 255);
+  --color-blue-800: oklch(0.86 0.08 255);
+  --color-blue-900: oklch(0.91 0.05 255);
+  --color-violet-50: oklch(0.26 0.05 293);
+  --color-violet-100: oklch(0.3 0.07 293);
+  --color-violet-200: oklch(0.4 0.1 293);
+  --color-violet-300: oklch(0.5 0.13 293);
+  --color-violet-600: oklch(0.74 0.14 293);
+  --color-violet-700: oklch(0.8 0.11 293);
+  --color-violet-800: oklch(0.86 0.08 293);
+  --color-violet-900: oklch(0.91 0.05 293);
+  --color-pink-50: oklch(0.27 0.05 350);
+  --color-pink-200: oklch(0.42 0.1 350);
+  --color-pink-600: oklch(0.74 0.15 350);
+  --color-pink-700: oklch(0.8 0.12 350);
+}
+
+/* Opt-out for things that represent physical paper (QR labels, print-sheet previews):
+   restores the stock light palette for the subtree even while the app is dark. */
+.dark .theme-light {
+  color-scheme: light;
+  color: oklch(0.208 0.042 265.755);
+  --app-surface: #ffffff;
+  --app-ink: #1E1B4B;
+  --app-ink-soft: #365486;
+  --app-brand-green: #00694C;
+  --app-field-border: #4C4A85;
+  --color-slate-50: oklch(98.4% 0.003 247.858);
+  --color-slate-100: oklch(96.8% 0.007 247.896);
+  --color-slate-200: oklch(92.9% 0.013 255.508);
+  --color-slate-300: oklch(86.9% 0.022 252.894);
+  --color-slate-400: oklch(70.4% 0.04 256.788);
+  --color-slate-500: oklch(55.4% 0.046 257.417);
+  --color-slate-600: oklch(44.6% 0.043 257.281);
+  --color-slate-700: oklch(37.2% 0.044 257.287);
+  --color-slate-800: oklch(27.9% 0.041 260.031);
+  --color-slate-900: oklch(20.8% 0.042 265.755);
+  --color-slate-950: oklch(12.9% 0.042 264.695);
+  --color-red-50: oklch(97.1% 0.013 17.38);
+  --color-red-200: oklch(88.5% 0.062 18.334);
+  --color-red-600: oklch(57.7% 0.245 27.325);
+  --color-amber-50: oklch(98.7% 0.022 95.277);
+  --color-amber-200: oklch(92.4% 0.12 95.746);
+  --color-amber-700: oklch(55.5% 0.163 48.998);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;}
+  body {
+    @apply bg-background text-foreground;}
+  html {
+    @apply font-sans;}
+}
+
+@layer utilities {
+    .premium-bg {
+        @apply min-h-screen relative overflow-hidden;
+
+        background-color: #f8fbff;
+
+        background-image:
+            /* glossy top glow */
+            radial-gradient(circle at top center,
+                rgba(255, 255, 255, 0.95) 0%,
+                rgba(255, 255, 255, 0.55) 18%,
+                transparent 42%),
+
+            /* primary ambient light */
+            radial-gradient(circle at top left,
+                rgba(99, 102, 241, 0.16),
+                transparent 28%),
+
+            /* secondary blue glow */
+            radial-gradient(circle at top right,
+                rgba(56, 189, 248, 0.14),
+                transparent 30%),
+
+            /* soft pink warmth */
+            radial-gradient(circle at bottom left,
+                rgba(244, 114, 182, 0.10),
+                transparent 34%),
+
+            /* glossy white blend */
+            linear-gradient(135deg,
+                #fcfdff 0%,
+                #f7faff 38%,
+                #f4f8ff 68%,
+                #ffffff 100%);
+
+        background-attachment: fixed;
+    }
+
+    .premium-bg::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+
+        background:
+            radial-gradient(circle at top,
+                rgba(255, 255, 255, 0.75),
+                transparent 55%);
+
+        pointer-events: none;
+        mix-blend-mode: soft-light;
+    }
+
+    .premium-bg::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.06) 1px,
+                transparent 1px),
+            linear-gradient(90deg,
+                rgba(255, 255, 255, 0.06) 1px,
+                transparent 1px);
+
+        background-size: 80px 80px;
+
+        opacity: 0.18;
+        pointer-events: none;
+        mask-image: radial-gradient(circle at center, black, transparent 90%);
+    }
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.72);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.05),
+        0 20px 60px rgba(15, 23, 42, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    border-radius: 24px;
+}
+
+/* Stock Out stacks several cards 16px apart — the deep default shadow pools into grey bands
+   between them, so cards there get the same light lift as the Design Master / Stock In sheets. */
+.stock-out .glass-card {
+    box-shadow:
+        0 4px 20px rgba(15, 23, 42, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-table {
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.55),
+            rgba(255, 255, 255, 0.22));
+
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+        0 1px 1px rgba(255, 255, 255, 0.35) inset,
+        0 8px 24px rgba(15, 23, 42, 0.10),
+        0 2px 6px rgba(15, 23, 42, 0.06),
+        0 0 0 0.5px rgba(255, 255, 255, 0.18);
+}
+
+.toolbar-neu {
+    background: rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    box-shadow:
+        inset 1px 1px 0 rgba(255, 255, 255, 0.7),
+        inset -1px -1px 0 rgba(255, 255, 255, 0.15),
+        4px 4px 12px rgba(15, 23, 42, 0.04),
+        -4px -4px 12px rgba(255, 255, 255, 0.45);
+
+    transition: all 0.25s ease;
+}
+
+.neu-button {
+    background: rgba(255, 255, 255, 0.35);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        3px 3px 8px rgba(15, 23, 42, 0.04),
+        -3px -3px 8px rgba(255, 255, 255, 0.5);
+
+    transition: all 0.2s ease;
+}
+
+.neu-button:hover {
+    background: rgba(255, 255, 255, 0.55);
+
+    box-shadow:
+        inset 2px 2px 4px rgba(15, 23, 42, 0.03),
+        inset -2px -2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.neu-icon-button {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9999px;
+
+    background: rgba(255, 255, 255, 0.35);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    box-shadow:
+        3px 3px 8px rgba(15, 23, 42, 0.04),
+        -3px -3px 8px rgba(255, 255, 255, 0.5);
+
+    transition: all 0.2s ease;
+}
+
+.neu-icon-button:hover {
+    transform: translateY(-1px);
+
+    background: rgba(255, 255, 255, 0.55);
+}
+
+.neu-pressed {
+    background: rgba(255, 255, 255, 0.3);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    box-shadow:
+        inset 4px 4px 10px rgba(15, 23, 42, 0.06),
+        inset -4px -4px 10px rgba(255, 255, 255, 0.8);
+
+    border-radius: 9999px;
+
+    transition: all 0.2s ease;
+}
+
+.neu-pressed:focus-within {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow:
+        inset 5px 5px 12px rgba(15, 23, 42, 0.08),
+        inset -5px -5px 12px rgba(255, 255, 255, 0.9),
+        0 0 0 2px rgba(255, 255, 255, 0.6);
+}
+
+/* Emerald ERP-style pill input, used by the Stock In wizard (Stock Inwarding). */
+.pill-input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.875rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.pill-input:focus,
+.pill-input:focus-within {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+
+/* ---------------------------------------------------------------------------------------
+   Dark mode overrides for classes the palette remap above can't reach (white/black and
+   arbitrary brand hexes). Wrapped in :where(.dark) so they carry the same specificity as
+   the utility they replace — hover:/focus:/dark: variants on the same element still win.
+   --------------------------------------------------------------------------------------- */
+@layer utilities {
+    :where(.dark) .bg-white { background-color: var(--app-surface); }
+    :where(.dark) .bg-white\/90 { background-color: color-mix(in oklab, var(--app-surface) 90%, transparent); }
+    :where(.dark) .bg-white\/80 { background-color: color-mix(in oklab, var(--app-surface) 80%, transparent); }
+    :where(.dark) .bg-white\/70 { background-color: color-mix(in oklab, var(--app-surface) 72%, transparent); }
+    :where(.dark) .bg-white\/20 { background-color: color-mix(in oklab, var(--app-surface) 35%, transparent); }
+    :where(.dark) .border-white,
+    :where(.dark) .border-white\/60,
+    :where(.dark) .border-white\/40 { border-color: oklch(1 0 0 / 10%); }
+    :where(.dark) .border-black\/10 { border-color: oklch(1 0 0 / 14%); }
+    :where(.dark) .border-black\/20 { border-color: oklch(1 0 0 / 22%); }
+
+    /* Inverted (light) buttons: bg-slate-900 flips to near-white, so its ink must flip too. */
+    :where(.dark) .bg-slate-900.text-white { color: var(--background); }
+    :where(.dark) .hover\:bg-black:hover { background-color: var(--color-slate-800); }
+    /* Solid emerald buttons keep their stock shade so text-white stays readable. */
+    :where(.dark) .bg-emerald-600 { background-color: oklch(59.6% 0.145 163.225); }
+    :where(.dark) .hover\:bg-emerald-700:hover { background-color: oklch(50.8% 0.118 165.612); }
+
+    :where(.dark) .text-\[\#1E1B4B\] { color: var(--app-ink); }
+    :where(.dark) .text-\[\#1E293B\] { color: var(--color-slate-800); }
+    :where(.dark) .text-\[\#365486\] { color: var(--app-ink-soft); }
+    :where(.dark) .text-\[\#00694C\] { color: var(--app-brand-green); }
+    :where(.dark) .border-\[\#4C4A85\] { border-color: var(--app-field-border); }
+    :where(.dark) .bg-\[\#1E1B4B\] { background-color: oklch(0.45 0.18 277); color: #fff; }
+    /* Brand buttons relied on --primary-foreground (white in light mode, dark in dark mode). */
+    :where(.dark) .bg-\[\#00694C\],
+    :where(.dark) .bg-\[\#B91C1C\] { color: #fff; }
+    /* …and on hover they'd fall through to hover:bg-primary/80, which is near-white here. */
+    :where(.dark) .bg-\[\#1E1B4B\]:hover { background-color: oklch(0.5 0.19 277); }
+    :where(.dark) .bg-\[\#00694C\]:hover { background-color: oklch(0.52 0.12 165); }
+    :where(.dark) .bg-\[\#B91C1C\]:hover { background-color: oklch(0.55 0.2 27); }
+
+    /* Variant colour swatches get their fill from data — outline them so black/dark-brown
+       variants don't vanish into the dark surface. */
+    :where(.dark) .rounded-full[style*="background-color"] { box-shadow: 0 0 0 1px oklch(1 0 0 / 28%); }
+
+    /* Scroll areas hardcode an indigo thumb that disappears on dark surfaces. */
+    :where(.dark) [class*="scrollbar-color"] { scrollbar-color: oklch(1 0 0 / 22%) transparent; }
+    :where(.dark) [class*="scrollbar-thumb"]::-webkit-scrollbar-thumb { background-color: oklch(1 0 0 / 22%); }
+
+    .dark .premium-bg {
+        background-color: oklch(0.16 0.025 265);
+        background-image:
+            radial-gradient(circle at top left, rgba(99, 102, 241, 0.16), transparent 30%),
+            radial-gradient(circle at top right, rgba(56, 189, 248, 0.10), transparent 32%),
+            radial-gradient(circle at bottom left, rgba(244, 114, 182, 0.06), transparent 36%),
+            linear-gradient(135deg, oklch(0.17 0.028 268) 0%, oklch(0.16 0.025 262) 60%, oklch(0.15 0.022 258) 100%);
+    }
+    .dark .premium-bg::before { background: radial-gradient(circle at top, rgba(148, 163, 255, 0.06), transparent 55%); }
+    .dark .premium-bg::after { opacity: 0.08; }
+}
+
+.dark .glass-card {
+    background: color-mix(in oklab, var(--app-surface) 78%, transparent);
+    border-color: oklch(1 0 0 / 9%);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.25),
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 oklch(1 0 0 / 6%);
+}
+
+.dark .stock-out .glass-card {
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 oklch(1 0 0 / 6%);
+}
+
+.dark .glass-table {
+    background: linear-gradient(135deg, oklch(0.24 0.03 264 / 70%), oklch(0.2 0.028 264 / 55%));
+    border-color: oklch(1 0 0 / 9%);
+    box-shadow:
+        0 1px 0 oklch(1 0 0 / 6%) inset,
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dark .toolbar-neu {
+    background: oklch(0.24 0.03 264 / 70%);
+    border-color: oklch(1 0 0 / 9%);
+    box-shadow:
+        inset 0 1px 0 oklch(1 0 0 / 6%),
+        4px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.dark .neu-button,
+.dark .neu-icon-button {
+    background: oklch(0.28 0.032 262 / 80%);
+    border-color: oklch(1 0 0 / 10%);
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3), -1px -1px 4px oklch(1 0 0 / 4%);
+}
+
+.dark .neu-button:hover,
+.dark .neu-icon-button:hover {
+    background: oklch(0.32 0.035 262);
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.dark .neu-pressed {
+    background: oklch(0.19 0.026 264 / 80%);
+    border-color: oklch(1 0 0 / 8%);
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.35), inset -2px -2px 6px oklch(1 0 0 / 4%);
+}
+
+.dark .neu-pressed:focus-within {
+    background: oklch(0.21 0.028 264);
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.35), 0 0 0 2px oklch(1 0 0 / 14%);
+}
+
+.dark .pill-input {
+    border-color: oklch(1 0 0 / 14%);
+    background-color: var(--app-surface);
+    color: var(--foreground);
+}
+
+
+
+
+/* Current Stock "Print report" — while the preview is open (body.cs-printing), printing outputs
+   only the report sheet, never the app shell behind it. */
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body.cs-printing > *:not(.cs-print-root) { display: none !important; }
+  body.cs-printing .cs-print-root { position: static; display: block; overflow: visible; background: none; padding: 0; }
+  body.cs-printing .cs-print-bar { display: none !important; }
+  body.cs-printing .cs-print-sheet { box-shadow: none; border-radius: 0; padding: 0; max-width: none; }
+}
+
+/* Stock Transformation "print tags" — while the label sheet is open (body.tf-printing), printing
+   outputs only the labels, one true-size 50 × 30 mm page each (3.78 px ≈ 1 mm on screen). */
+@page tf-label { size: 50mm 30mm; margin: 0; }
+@media print {
+  body.tf-printing > *:not(.tf-print-root) { display: none !important; }
+  body.tf-printing .tf-print-root { position: static; display: block; overflow: visible; background: none; padding: 0; }
+  body.tf-printing .tf-print-bar { display: none !important; }
+  body.tf-printing .tf-print-root > div { display: block; gap: 0; }
+  body.tf-printing .tf-label-page { page: tf-label; break-after: page; width: 50mm; height: 30mm; overflow: hidden; }
+  body.tf-printing .tf-label-page > div { width: 50mm !important; height: 30mm !important; }
+}

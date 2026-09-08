@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>frontend</title>
+    <script>
+      // Apply the saved/system theme before first paint (see src/hooks/useTheme.js), and
+      // always print in light mode — labels and QR sheets must come out dark-on-white.
+      (function () {
+        var root = document.documentElement;
+        var stored = null;
+        try { stored = localStorage.getItem("theme"); } catch (e) {}
+        var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.classList.toggle("dark", dark);
+
+        var wasDark = false;
+        window.addEventListener("beforeprint", function () {
+          wasDark = root.classList.contains("dark");
+          root.classList.remove("dark");
+        });
+        window.addEventListener("afterprint", function () {
+          if (wasDark) root.classList.add("dark");
+        });
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
