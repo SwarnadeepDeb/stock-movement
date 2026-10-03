@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="180" viewBox="0 0 600 180">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#E40A7D"/><stop offset="1" stop-color="#ED7F1D"/></linearGradient></defs>
+  <text x="300" y="92" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="68" font-weight="700" fill="url(#g)">Saksham’s</text>
+  <text x="300" y="150" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="46" font-style="italic" fill="#1F1B2E">Fashions</text>
+</svg>
